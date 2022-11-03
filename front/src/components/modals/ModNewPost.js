@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux'
 import { Popup } from '../modals/ModAlerts';
 import TextareaAutosize from 'react-textarea-autosize';
 
-import { v4 as uuidv4 } from "uuid";
-import uuid from 'react-uuid';
+import { v4 as uuid } from "uuid";
+//import uuid from 'react-uuid';
 
 import btncloseOff from '../../assets/mesimages/close0.webp'
 import btncloseOn from '../../assets/mesimages/close1.webp'
@@ -17,7 +17,7 @@ export default function ModNewPost(props) {
     const [redaction, setRedaction] = useState('');     // Textarea
     const [image, setImage] = useState(null);
     const [imageUpdated, setImageUpdated] = useState('');
-    const [altText, setAltText] = useState(''); 
+    const [altText, setAltText] = useState(); 
     const [showAlt, setShowAlt] = useState(false); 
         
     const actionPopup = (bool) => {(!bool) && setShowPopup({ show: false, type: null, msg: null }) }
@@ -33,7 +33,7 @@ export default function ModNewPost(props) {
 
             if (redaction) DONNEES.append('content', redaction);    /* Rédaction facultative */
             if (image) DONNEES.append('sharedImg', image);          /* Image facultative */
-            if (altText) DONNEES.append('alt', altText);            /* Texte alternatif facultatif */
+            if (altText) DONNEES.append('sharedImgAlt', altText);            /* Texte alternatif facultatif */
             
 
             if (!redaction && !image) {
@@ -88,7 +88,7 @@ export default function ModNewPost(props) {
     }
 
     return [
-        (showPopup.show) ? (<Popup display={actionPopup} message={showPopup.msg} type={showPopup.type} key={uuidv4} />) : null,
+        (showPopup.show) ? (<Popup display={actionPopup} message={showPopup.msg} type={showPopup.type} key={uuid()} />) : null,
 
         <div className="modal" key={uuid}>
             <div className="modal__content">
@@ -107,15 +107,15 @@ export default function ModNewPost(props) {
                     <div className="TA">
                         <TextareaAutosize spellCheck="false" onChange={(e) => { writeText(e) }} value={ redaction } />
                     </div>
-                    <input type="file" id='input0' value={imageUpdated} onChange={(e) => addPicture(e) } />
-                    {image && <img src={URL.createObjectURL(image)} alt={"image à publier "+uuidv4()} />}
+                    <input type="file" id='input0' value={imageUpdated} onChange={(e) => addPicture(e) }/>
+                    {image && <img src={URL.createObjectURL(image)} alt={"image à publier "+uuid()} />}
 
                     <div className='buttons'>
                         <button onClick={(e) => runInputFile(e)}>{!image && 'Ajouter une image'}{image && 'Modifier'}</button>  
                         {image && [
                                 <button onClick={(e) => clearImage(e)} key={'btndel'}>Effacer</button>,
                                 <button onClick={(e) => displayAlt(e)} key={'btnalt'}>Texte alt.</button>,
-                                showAlt && (<input type="text" value={ altText } onChange={(e) => writeAlt(e) } />)
+                                showAlt && (<input type="text" value={ altText } onChange={(e) => writeAlt(e) } key={'textalt'} />)
                             ]
                         } 
                     </div>                   

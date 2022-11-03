@@ -44,7 +44,6 @@ export default function ThisPost(props) {
             time : props.content.date_creation,
             lap : Math.floor((new Date(props.content.date_creation).getTime() / 60000))
         }
-        console.log(info);
         setMyPost(info);
         
         (async () => { load_comments(props.content._id) })();   // Chargement des commentaires
@@ -139,14 +138,15 @@ export default function ThisPost(props) {
         if (modal) {  
             setModal(false) /* Cache la modale : */ 
 
-            if (data) {                
+            if (data) {      
                 dispatch({ type: 'UPDATE_POST', payload: { data: data.content } });
                 setMyPost({ 
                     ...myPost,
                     content: data.content.content, 
-                    sharedImg: data.content.sharedImg
+                    sharedImg: data.content.sharedImg,
+                    sharedImgAlt: data.content.sharedImgAlt
                 });
-                setShowPopup({ show: true, msg: `La publication a été mise à jour..` }) 
+                setShowPopup({ show: true, type: 'success', msg: `La publication a été mise à jour..` }) 
             }
         }
         else {
@@ -202,11 +202,7 @@ export default function ThisPost(props) {
                         Authorization: "Bearer "+getToken() }  
         })
         .then((res) => {
-            console.log(res.status);
-            if (res.status === 204) { 
-                setShowPopup({ show: true, type: 'success', msg: `La publication va être supprimée..` });
-                setTimeout( () => { dispatch({ type: 'DELETE_POST', payload: { id: myPost._id } }) },3000);
-            }
+            (res.status === 204) && dispatch({ type: 'DELETE_POST', payload: { id: myPost._id } })
         })
         .catch((err) => console.log('Problème avec DeletePost() \r\n', err.response) )
     }
@@ -246,7 +242,7 @@ export default function ThisPost(props) {
                                 {/* L'image pourrait ne pas être fournie */}
                                 { myPost && myPost.sharedImg && 
                                     <figure>                                        
-                                        <img src={ myPost.sharedImg } alt={!myPost.alt ? `image partagée par ${userconfig.user.pseudo}` : myPost.alt}  />
+                                        <img src={ myPost.sharedImg } alt={myPost.sharedImgAlt==='' ? `image partagée par ${userconfig.user.pseudo}` : myPost.sharedImgAlt}  />
                                     </figure>
                                 }                 
                             </div>

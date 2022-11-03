@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { v4 as uuidv4 } from "uuid";
-import uuid from 'react-uuid';
+import { v4 as uuid} from "uuid";
+//import uuid from 'react-uuid';
 
 import { Popup } from '../modals/ModAlerts';
 import TextareaAutosize from 'react-textarea-autosize';
@@ -24,7 +24,7 @@ export default function ModNewPost(props) {
 
     useEffect(() => {
         if (props.content.sharedImg) setImage(props.content.sharedImg)
-        if (props.content.alt) setAltText(props.content.alt)
+        if (props.content.sharedImgAlt) setAltText(props.content.sharedImgAlt)
 
         // Supprimer les champs inutiles pour le reducer..
         Reflect.deleteProperty(props.content, 'lap');
@@ -42,8 +42,7 @@ export default function ModNewPost(props) {
             DONNEES.append('date_creation', getUTCtime());          /* Date de création */
             DONNEES.append('content', redaction);    /* Rédaction facultative */
             (image) ? DONNEES.append('sharedImg', image) : DONNEES.append('sharedImg', '') ;          /* Image facultative */
-            DONNEES.append('alt', altText);            /* Texte alternatif facultatif */
-            //if (altText) DONNEES.append('alt', altText);            /* Texte alternatif facultatif */
+            DONNEES.append('sharedImgAlt', altText);            /* Texte alternatif facultatif */
 
             if (!redaction && !image) {
                 // [info] Interdire la création de la publication, si texte ET image sont vides */
@@ -101,7 +100,7 @@ export default function ModNewPost(props) {
     }
 
     return [
-        (showPopup.show) ? (<Popup display={actionPopup} message={showPopup.msg} type={showPopup.type} key={uuidv4} />) : null,
+        (showPopup.show) ? (<Popup display={actionPopup} message={showPopup.msg} type={showPopup.type} key={uuid()} />) : null,
 
         <div className="modal" key={uuid}>
             <div className="modal__content">
@@ -121,15 +120,14 @@ export default function ModNewPost(props) {
                         <TextareaAutosize id="taBody" spellCheck="false" onChange={(e) => { writeText(e) }} defaultValue={ props.content.content } />
                     </div>
                     <input type="file" id='input0' value={''} onChange={(e) => addPicture(e) } />
-                    {image && <img src={displayPicture()} alt={"image à publier "+uuidv4()} />}
+                    {image && <img src={displayPicture()} alt={"image à publier "+uuid()} />}
 
                     <div className='buttons'>
                         <button onClick={(e) => runInputFile(e)}>{!image && 'Ajouter une image'}{image && 'Modifier l\'image'}</button>  
-                        {/* {image && <button onClick={(e) => clearImage(e)}>Effacer l'image'</button>}  */}
                         {image && [
                                 <button onClick={(e) => clearImage(e)} key={'btndel'}>Effacer</button>,
                                 <button onClick={(e) => displayAlt(e)} key={'btnalt'}>Texte alt.</button>,
-                                showAlt && (<input type="text" value={ altText } onChange={(e) => writeAlt(e) } />)
+                                showAlt && (<input type="text" value={ altText } onChange={(e) => writeAlt(e) } key={'textalt'} />)
                             ]
                         }
                     </div>                 

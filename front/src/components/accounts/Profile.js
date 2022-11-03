@@ -99,11 +99,11 @@ const Profile = (props) => {
                     }
                     delete(out._id)
                     
-                    setPhotoUpdated('')
-                    setShowPopup({ show: true, type: 'success', msg: `Informations mises à jour` }) 
+                    setPhotoUpdated('')                    
 
                     // [info] Mise à jour du contexte
-                    setTimeout( () => { dispatch({ type: 'SET_USER', payload: out }) },3000)                   
+                    dispatch({ type: 'SET_USER', payload: out })    
+                    setShowPopup({ show: true, type: 'success', msg: `Informations mises à jour` })               
                 }
             })
             .catch((err) => console.log('Problème de mise à jour pour l\'utilisateur.. \r\n', err.response) )

@@ -203,6 +203,17 @@ section div.avatar > img {
   align-self: center;
   cursor: pointer;
 }
+section h2.noposts {
+  color: orange;
+  font-size: 1em;
+  padding: 50px;
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: center;
+  text-align: center;
+}
 
 header {
   display: flex;

@@ -151,7 +151,6 @@ export default function Comment(props) {
                         Authorization: "Bearer "+getToken() }  
         })
         .then((res) => {
-            console.log(res.status, props.content._id);
             if (res.status === 204) {             
                 setShowPopup({ show: true, type: 'success', msg: `Le commentaire va être supprimé` })   
                 setTimeout( () => { dispatch({ type: 'DELETE_COMMENT', payload: { id: props.content._id } }) },3000)                 

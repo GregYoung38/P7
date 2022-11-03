@@ -96,9 +96,11 @@ const Posts = (props) => {
             {modal ? <Modal shown={openModal} /> : null}
 
             {/* Afficher les posts */}
-            { publis && publis.posts.map( (item) => {
+            { publis ? publis.posts.map( (item) => {
                 return (<ThisPost content={item} key={item._id}/>);
               }) 
+              :
+              <h2 className='noposts'>Soyez le premier à rédiger la toute première publication</h2>
             }
         </section>
     )

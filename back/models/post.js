@@ -18,10 +18,6 @@ const Schema_for_Post = mongoose.Schema({
         type: String, 
         required: false 
     },
-    alt: { 
-        type: String, 
-        required: false 
-    },
     date_creation : { 
         type : Date,
         default: new Date()

@@ -16,12 +16,15 @@ export default function ModNewPost(props) {
     const [redaction, setRedaction] = useState('');         // Uniquement pour le Textarea
     const [image, setImage] = useState();
     const [imageUpdated, setImageUpdated] = useState('');
+    const [altText, setAltText] = useState(''); 
+    const [showAlt, setShowAlt] = useState(false); 
 
     const actionPopup = (bool) => {(!bool) && setShowPopup({ show: false, type: null, msg: null }) }
     const [showPopup, setShowPopup] = useState({ show: false, type: null, msg: null })
 
     useEffect(() => {
         if (props.content.sharedImg) setImage(props.content.sharedImg)
+        if (props.content.alt) setAltText(props.content.alt)
 
         // Supprimer les champs inutiles pour le reducer..
         Reflect.deleteProperty(props.content, 'lap');
@@ -39,6 +42,7 @@ export default function ModNewPost(props) {
             DONNEES.append('date_creation', getUTCtime());          /* Date de création */
             DONNEES.append('content', redaction);    /* Rédaction facultative */
             (image) ? DONNEES.append('sharedImg', image) : DONNEES.append('sharedImg', '') ;          /* Image facultative */
+            DONNEES.append('alt', altText);            /* Texte alternatif facultatif */
             //if (altText) DONNEES.append('alt', altText);            /* Texte alternatif facultatif */
 
             if (!redaction && !image) {
@@ -81,6 +85,12 @@ export default function ModNewPost(props) {
             if (image) { return image }
         }
     }
+    function writeAlt(e) {
+        setAltText(e.target.value);
+    }
+    function displayAlt(e) {
+        (!showAlt ? setShowAlt(true) : setShowAlt(false))
+    }
     function clearImage(e) {
         setImage()
         setImageUpdated()
@@ -115,7 +125,13 @@ export default function ModNewPost(props) {
 
                     <div className='buttons'>
                         <button onClick={(e) => runInputFile(e)}>{!image && 'Ajouter une image'}{image && 'Modifier l\'image'}</button>  
-                        {image && <button onClick={(e) => clearImage(e)}>Effacer l'image'</button>} 
+                        {/* {image && <button onClick={(e) => clearImage(e)}>Effacer l'image'</button>}  */}
+                        {image && [
+                                <button onClick={(e) => clearImage(e)} key={'btndel'}>Effacer</button>,
+                                <button onClick={(e) => displayAlt(e)} key={'btnalt'}>Texte alt.</button>,
+                                showAlt && (<input type="text" value={ altText } onChange={(e) => writeAlt(e) } />)
+                            ]
+                        }
                     </div>                 
                 </div>
 

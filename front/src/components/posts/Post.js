@@ -44,7 +44,7 @@ export default function ThisPost(props) {
             time : props.content.date_creation,
             lap : Math.floor((new Date(props.content.date_creation).getTime() / 60000))
         }
-        
+        console.log(info);
         setMyPost(info);
         
         (async () => { load_comments(props.content._id) })();   // Chargement des commentaires
@@ -246,7 +246,7 @@ export default function ThisPost(props) {
                                 {/* L'image pourrait ne pas être fournie */}
                                 { myPost && myPost.sharedImg && 
                                     <figure>                                        
-                                        <img src={ myPost.sharedImg } alt={!myPost.alt ? "profil" : myPost.alt}  />
+                                        <img src={ myPost.sharedImg } alt={!myPost.alt ? `image partagée par ${userconfig.user.pseudo}` : myPost.alt}  />
                                     </figure>
                                 }                 
                             </div>

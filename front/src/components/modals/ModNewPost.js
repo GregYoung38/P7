@@ -17,8 +17,8 @@ export default function ModNewPost(props) {
     const [redaction, setRedaction] = useState('');     // Textarea
     const [image, setImage] = useState(null);
     const [imageUpdated, setImageUpdated] = useState('');
-    const [altText, setAltText] = useState('');     // Textarea
-    const [showAlt, setShowAlt] = useState(false);     // Textarea
+    const [altText, setAltText] = useState(''); 
+    const [showAlt, setShowAlt] = useState(false); 
         
     const actionPopup = (bool) => {(!bool) && setShowPopup({ show: false, type: null, msg: null }) }
     const [showPopup, setShowPopup] = useState({ show: false, type: null, msg: null })

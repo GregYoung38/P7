@@ -46,7 +46,7 @@ exports.create_new = async (req, res) => {
         res.status(201).json({ message: "Post créé !", content: post });
     } 
     catch (e) {
-        res.status(400).json({ message: `Erreur mongoose\r\n${err}`, body: post });
+        res.status(400).json({ message: `Erreur mongoose\r\n${e}`, body: post });
     }
 };
 

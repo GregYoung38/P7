@@ -14,6 +14,10 @@ const Schema_for_Post = mongoose.Schema({
         type: String, 
         required: false 
     },
+    sharedImgAlt: { 
+        type: String, 
+        required: false 
+    },
     alt: { 
         type: String, 
         required: false 
@@ -22,11 +26,6 @@ const Schema_for_Post = mongoose.Schema({
         type : Date,
         default: new Date()
     },
-    // likes: { 
-    //     type: Number, 
-    //     required: true, 
-    //     default: 0 
-    // },
     usersLiked: { 
         type: [String], 
         required: true 

@@ -139,7 +139,7 @@ const Profile = (props) => {
         <div className="profile" key={uuidv4()}>
             <img id="testImage" ref={pImg} src={(photo) 
                 ? `${process.env.REACT_APP_PICS_PROFILES}${photo}` 
-                : imgDefault} 
+                : imgDefault} alt={`image de profil`}
             />
             
             <div>

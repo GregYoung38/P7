@@ -267,7 +267,7 @@ ul li:hover {
   padding: 0;
 }
 .connectzone div li {
-  color: tomato;
+  color: #FFB497;
 }
 .connectzone div li:hover {
   text-decoration: underline;
@@ -310,21 +310,21 @@ ul li:hover {
   width: unset;
   background: #ccc;
   padding: 10px 20px;
-  border-top: 1px solid rgb(50, 50, 50);
-  border-bottom: 1px solid rgb(50, 50, 50);
+  border-top: 1px solid silver;
+  border-bottom: 1px solid silver;
   font-size: 0.7em;
   color: #000;
 }
 .navigation ul li.first {
   border-radius: 6px 0 0 6px;
-  border-left: 1px solid rgb(50, 50, 50);
+  border-left: 1px solid silver;
 }
 .navigation ul li.last {
   border-radius: 0 6px 6px 0;
-  border-right: 1px solid rgb(50, 50, 50);
+  border-right: 1px solid silver;
 }
 .navigation ul li.current {
-  background: cornflowerblue;
+  background: #00577F;
   color: beige;
 }
 .navigation ul li.medium {
@@ -346,7 +346,7 @@ ul li:hover {
 }
 .navigation div.palet {
   display: flex;
-  background: cornflowerblue;
+  background: lavender;
   width: 94%;
   height: 5px;
   margin: 2px 3% 0 3%;
@@ -565,7 +565,7 @@ article .post-head .post-body div.part-comment div h2 {
   text-decoration: underline;
   padding-left: 3px;
   font-style: italic;
-  color: blueviolet;
+  color: #5C2BE2;
 }
 article .post-head .post-body div.part-comment div div.TA {
   background: lightgrey;
@@ -587,7 +587,7 @@ article .post-head .post-body div.part-comment div div.TA button:nth-child(3).on
 article button {
   border: 0.2px solid rgb(143, 141, 141);
   border-radius: 6px;
-  background: mediumpurple;
+  background: #4F0067;
   padding: 2px 8px;
   font-size: 0.6em;
   color: #fff;
@@ -999,7 +999,7 @@ div.modal__content__footer button:hover {
 /* Footer */
 footer {
   padding: 20px;
-  color: lightslategray;
+  color: #BDCCC5;
 }
 footer h2 {
   font-size: 0.7em;

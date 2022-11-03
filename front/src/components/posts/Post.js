@@ -238,7 +238,8 @@ export default function ThisPost(props) {
                                 {/* Le texte pourrait ne pas être fourni */} 
                                 { myPost && myPost.content && 
                                     <div className="TA">
-                                        <TextareaAutosize className="new-comment" spellCheck={false} contentEditable={false} value={ myPost.content } />
+                                        <TextareaAutosize className="new-comment" spellCheck={false} aria-label="texte de la publication"
+                                                          contentEditable={false} value={ myPost.content } />
                                     </div>
                                 }
 
@@ -270,7 +271,7 @@ export default function ThisPost(props) {
                                     </li>
 
                                     <li className='link'>
-                                        <a href={`#newcom-${props.content._id}`}>
+                                        <a href={`#newcom-${props.content._id}`} aria-label={`Ecrire un nouveau post`}>
                                             <FontAwesomeIcon className="comment" icon={faCommentDots} />  
                                         </a>
                                     </li>

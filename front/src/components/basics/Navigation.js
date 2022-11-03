@@ -43,7 +43,7 @@ export default function Menu() {
                     }) }
                 </ul>
 
-                <img src={hamburger} className='hamburger' onClick={() => setMiniMenu(true)} alt="icone de menu hamburger" width="50px" />
+                <img src={hamburger} className='hamburger' onClick={() => setMiniMenu(true)} alt="icone de menu hamburger" width="50px" height="50px"/>
                 {miniMenu ? <ModMenu display={ openResponsiveMenu } /> : null}                
             </nav>
         </div>

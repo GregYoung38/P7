@@ -169,7 +169,9 @@ export default function Comment(props) {
             <div>
                 <div className="TA">
                     <h2>{ author.name } a écrit :</h2>
-                    <TextareaAutosize className="new-comment" ref={textareaContent} spellCheck={false} onChange={(e) => { writeText(e)}} defaultValue={redaction}/>
+                    <TextareaAutosize className="new-comment" ref={textareaContent} 
+                                      spellCheck={false} aria-label="commentaire enregistré"
+                                      onChange={(e) => { writeText(e)}} defaultValue={redaction}/>
 
                     { !inUpdate && 
                         <button className={likers && findLiker() === 0 ? 'on' : null} onClick={sendLike}>

@@ -1,0 +1,66 @@
+.navigation {
+    display: flex;
+    z-index: 5;
+    align-self: center;
+    justify-content: flex-start;
+
+    & ul {
+        z-index: 1;
+
+        & li {
+            display: block;
+            width: unset;
+            background: #ccc;
+            padding: 10px 20px;
+            border-top: 1px solid map-get($colors, border1);
+            border-bottom: 1px solid map-get($colors, border1);
+            font-size: 0.7em;
+            color: #000;
+    
+            &.first {
+                border-radius: 6px 0 0 6px;
+                border-left: 1px solid map-get($colors, border1);
+            }
+    
+            &.last {
+                border-radius: 0 6px 6px 0;
+                border-right: 1px solid map-get($colors, border1);
+            }
+
+            &.current {
+                background: cornflowerblue; 
+                color: beige;                
+            }
+
+            &.medium {
+                border-radius: 8px;
+                margin-left: 5px;
+                background: rgb(151, 42, 27);
+
+                &:hover {
+                    background: rgb(139, 90, 0);
+                }
+            }
+    
+            &:not(.current):hover {
+                text-decoration: underline;
+                font-weight: bold;
+            }
+        }        
+    }
+
+    & img {
+        display: none;
+        filter: invert(1);
+        cursor: pointer; 
+    }
+
+    & div.palet {
+        display: flex;
+        background: cornflowerblue;
+        width: 94%;
+        height: 5px;
+        margin: 2px 3% 0 3%;
+        border-radius: 8px;
+    }
+}

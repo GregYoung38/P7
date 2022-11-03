@@ -1,0 +1,133 @@
+/* [info] ------ desktop-first ------ */
+div.part-comment:last-child {
+    img:first-child {
+        align-self: center;
+    }
+}
+
+@media screen and (max-width: map-get($breakpoints, tablet)) {
+    img#testImage {
+        width: 120px;
+        margin-top: -40px;
+    }
+}
+
+@media screen and (max-width: map-get($breakpoints, mobile)) {
+  body {
+      width: 90%;
+  }
+
+  .post-buttons {
+      flex-direction: column;
+
+      &>div {
+        justify-content: center;
+      }
+
+      & h4 {
+        padding: 8px 0 0 0;
+        justify-content: center;
+      }
+  }
+  .profile div {
+    justify-content: space-between;
+  }
+  div.navigation {
+    & ul {
+      display: none
+    }
+
+    & img {
+      display: flex
+    }
+  }
+  div.modal__content {
+    margin-left: 0 !important; 
+    min-width: unset;
+
+    &__header {
+      & h1 {
+        font-size: 0.7em;
+      }        
+    }
+  }
+
+  img#testImage {
+    width: 120px;
+    margin-top: -20px;
+  }
+}
+
+@media screen and (max-width: map-get($breakpoints, small)) {
+  div.auth {
+      max-width: 95%;
+      padding: 60px 30px 40px 30px;
+
+      & h1 {
+        font-size: 0.65em;
+      }
+
+      & input {
+        font-size: 0.55em;
+      }
+
+      & button {
+        font-size: 0.6em;
+      }
+  }
+
+  article .post-head .post-body .part-user {
+      flex-direction: column;
+
+      & h2:nth-child(2) {
+          align-self: flex-start;
+          font-weight: 100;
+          padding: 0 0 0 6px;
+          margin: 0 0 3px 0;
+          font-size: 0.55em;
+      }
+  }
+  
+  .post-avatar img {
+      display: none !important;
+  }
+  .post-head {
+    flex-direction: column;
+  }
+  section {
+    width: 95%;
+  }
+
+  div.post-comment {
+      & p {
+        font-size: 0.6em;
+        height: 88px;
+      }
+  }
+
+  div.modal__content {
+    margin-left: 0 !important; 
+  }
+
+  .profile div {
+    flex-direction: column;
+    gap: 10px !important;
+    margin-bottom: 25px !important;
+
+    &>label {
+      text-align: center !important;
+    }
+  }
+
+  footer h2 {
+    font-size: 0.65em;
+  }
+}
+
+@media screen and (max-width: map-get($breakpoints, very-small)) {
+    div.connectzone {
+        &>div {
+            display: none
+        }
+    }
+}

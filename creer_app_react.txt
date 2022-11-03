@@ -1,0 +1,94 @@
+Tutoriel pour bien démarrer un projet React :
+https://www.digitalocean.com/community/tutorials/how-to-create-custom-components-in-react-fr
+
+----------------------------------------------------------------------------------------------------------
+Installer "emojis for VS Code" : (mais ça ne sert à rien en fait)
+https://marketplace.visualstudio.com/items?itemName=devzstudio.emoji-snippets
+----------------------------------------------------------------------------------------------------------
+
+Initialiser un nouveau projet :
+npx create-react-app new_project
+cd new_project
+--openssl-legacy-provider
+npm start
+
+Ajouter l'extension react-dev-tools : 
+https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi/related
+
+Ajouter le paquet react-router-dom
+
+----------------------------------------------------------------------------------------------------------
+
+Télécharger une ressource depuis un site et l'enregistrer dans src/
+cd front
+curl -o src/emoji.svg https://upload.wikimedia.org/wikipedia/commons/3/33/Twemoji_1f602.svg
+
+En cas de problème lié à @babel\core\lib\transformation\index.js,
+il faudra re-convertir l'image à l'aide d'un éditeur d'images (problème possible avec curl)
+tester aussi : il faut remplacer sketch:type TO sketchType, xmlns:xlink TO xmlnsXlink et xlink:href TO xlinkHref sinon cela ne fonctionne pas
+
+----------------------------------------------------------------------------------------------------------
+
+CECI : 
+export default function Instructions() {
+    return( ... )
+}
+
+REVIENT A ECRIRE :
+const Instructions = () => ( ... )
+export default Instructions;
+
+----------------------------------------------------------------------------------------------------------
+
+Afficher un élément HTML d'une manière conditionnelle :
+const isCreateUser = true;
+{ isCreateUser && <input className="password" type="password" value="" />}
+
+
+----------------------------------------------------------------------------------------------------------
+
+Construire les routes ==> app.js :
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
+<BrowserRouter>
+    <Routes>
+        <Route>
+            <Route path="/" element={<Authentication />} />
+            <Route path="/home" element={<Posts />} />
+        </Route>
+    </Routes>      
+</BrowserRouter>
+
+----------------------------------------------------------------------------------------------------------
+
+Installer sass :
+1) npm install sass
+2) Ajouter le script pour lancer sass : 
+   "sass": "sass --watch ./src/sass/style.scss:./src/style.css -w --style expanded"
+3) Créer l'architecture de dossiers (méthode 7-1) dans front/src/sass/..
+4) Créer un fichier de test scss dans l'un des dossiers
+5) Garnir le fichier "sass": src/sass/style.scss
+6) Faire le lien avec l'unique fichier style.css, depuis index.js et app.js (supprimer les autres références)
+7) npm run sass
+
+--------------------------------------------------------------------------------------------------------
+
+
+Le 25/10 à 02:30, j'ai désinstallé AXIOS 0.27 pour installer la version 0.21.4, sur la recommandation d'un internaute d'un site d'expérience.
+J'attends de voir...
+Le 26:10 0 00h30, les choses semblent être rentrées dans l'ordre. Mais l'éternel problème du formData (sur les fonctions qui doivent prendre
+en charge des uploads d'images) non intercepté par le middleware <auth> me contraint à passer aussi par le headers pour transmettre le paramètre 
+userId, nécessaire à la vérification du token.
+
+Pour afficher l'origine de la requête dans le middleware <auth> :
+// if (req.originalUrl.includes('getPosts') || req.originalUrl.includes('createPost')) { 
+    //     console.log('{AUTH} => '+ req.originalUrl +' --> userId : ', controlID)
+// }
+
+> AXIOS -> Suppression de post OU de commentaire
+    axios_post.delete(`/${myPost._id}`, { 
+        headers: { 'Content-Type': 'application/json', 
+                    Authorization: "Bearer "+getToken(),
+                    uid: idUser }  
+    })
+

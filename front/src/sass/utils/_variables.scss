@@ -1,0 +1,17 @@
+$colors: (
+    noir: #000,
+    primary: #FD2D01,
+    second: #FFD7D7,
+    third: #4E5166,
+    fourth: #9b9fc0,
+    border1: rgb(50,50,50)
+);
+
+$breakpoints: (
+    very-small: 360px,
+    small: 420px,
+    mobile: 576px,
+    tablet: 768px,
+    desktop: 992px,
+    super-desktop: 1200px
+);

@@ -1,0 +1,92 @@
+.profile {
+    display: flex;
+    flex-direction: column;   
+    width: 100%; 
+    padding: 0px 30px 30px 30px;
+    margin-top: 20px;
+    border-radius: 12px;
+    border: 1px solid azure;
+    background: linear-gradient(#9b9fc0, darksalmon);
+    
+    & img {
+        width: 180px;
+        align-self: center;
+        margin-bottom: 30px;
+        margin-top: -60px;
+        border-radius: 50%;
+        border: 1px solid dimgray;
+        background: #f1f1f1;
+    }
+
+    & div {
+        justify-content: center;   /* OU center (desktop) */
+        display: flex;
+        gap: 20px;
+        margin-bottom: 5px;
+
+        & label {
+            align-self: center;
+            width: 150px;
+            text-align: right;
+            font-weight: lighter;
+            font-size: 0.75em;
+            color: #000;
+        }
+
+        & input {
+            border-radius: 6px;
+            border: 1px solid rgb(200, 178, 178);
+            padding: 3px 10px;
+            outline: 0;
+            font-size: 0.7em;
+        }
+    }
+
+    & button {        
+        display: flex;
+        align-self: center;
+        margin-top: 40px;   
+        transition: 0.5s;
+        background-image: linear-gradient(180deg, map-get($colors, second) 0%, map-get($colors, primary) 100%);
+        box-shadow: 0px 0px 5px 1px rgb(0 0 0 / 20%); 
+        border-radius: 10px;
+        font-size: 0.8em;
+        color: rgb(50, 50, 50);
+        padding: 10px 25px;
+
+        &.updatePix {
+            padding: 5px 12px;
+            margin: 0;
+            background: none;
+            box-shadow: unset;
+            color: blue;
+
+            &:hover {
+                background: none; //radial-gradient(#485569, #d3a936);
+                font-weight: bold;
+                text-decoration: underline;
+                color:rgb(212, 0, 255)
+            }
+        }
+
+        &:hover {
+            background: radial-gradient(#485569, #7d3986);
+            color: rgb(255, 255, 255);
+            text-shadow: 0 0 1px #000;
+        }
+    }
+
+    & hr {
+        margin: 10px 0;
+        color: rgb(0, 140, 255)
+    }
+
+    & ul {
+        justify-content: center;
+
+        & li {
+            color: yellow;
+            font-size: 0.7em;
+        }
+    }
+}

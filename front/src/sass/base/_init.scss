@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+* {
+    box-sizing: border-box; 
+    font-family: 'Lato', sans-serif;
+}
+
+html {
+    font-size: 18pt;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 
+                 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto;
+    background: map-get($colors, third);    
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;  
+    
+    &.loginform {
+        justify-content: center;
+    }
+  }
+
+h1, h2, h3, h4, h5, h6, a, p, input, button, textarea {
+    font-family: 'Lato', sans-serif;  
+    margin: 0;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: none;
+    }
+  }
+h1, h2 { 
+    font-size: 10pt;
+    font-weight: normal 
+}
+
+
+
+.fa-regular, .far {
+     font-weight: 600 !important;
+}
+.fa-solid, .fas {
+    font-size: 3em;
+  }
+figure {
+    margin: 0
+}
+
+button {
+    font-size: 2em;
+    border: 0;
+    padding: 0;
+    background: none;
+    cursor: pointer;
+  }
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+input[type="file"] {
+    display: none
+}
+/* PERSONNALISATION SCROLLBAR H */
+textarea                                   { cursor: pointer }
+textarea::-webkit-scrollbar                { width: 10px; height: 7px;  }
+textarea::-webkit-scrollbar-track          { background: transparent;  }
+textarea::-webkit-scrollbar-thumb          { background-color: lightgrey;
+                                             border-radius: 10px; 
+                                             border: 1px solid darkkhaki; }
+textarea::-webkit-scrollbar-thumb:hover    { cursor: pointer !important;
+                                             background-color: rgb(192, 168, 223); }
+
+
+div.pageSpinner {
+    display: flex;
+    height: 80vh;
+
+    & .spinner {
+        font-size: 5em;
+        color: gray;
+        animation: turn-in 3s infinite linear
+     }
+}

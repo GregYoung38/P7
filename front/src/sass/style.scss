@@ -1,0 +1,17 @@
+@import "./utils/variables.scss";
+@import "./components/animations.scss";
+@import "./base/init.scss";
+@import "./components/app.scss";
+@import "./components/avatar.scss";
+@import "./components/navigation.scss";
+
+
+@import "./pages/authentication.scss";
+@import "./pages/post.scss";
+@import "./pages/profile.scss";
+
+@import "./utils/responsive.scss";
+
+@import "./components/modals.scss";
+
+@import "./layouts/footer.scss";

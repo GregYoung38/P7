@@ -1,0 +1,188 @@
+div.modalUpdate {
+    width: 100% !important;
+}
+
+div.modal {
+    position: fixed;
+    width: 100%;
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);    
+
+    &.menu {
+        background: #fff;
+        padding: 10px 10px 30px;
+        border-radius: 10px;
+        border: 1px solid;
+        box-shadow: inset 0 0 2em grey, 0 0 1em blueviolet;
+        max-width: 300px;
+        
+        & h2 {
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-bottom: 1px solid dimgray
+        }
+
+        & img.btn {
+            align-self: end;
+            filter: none;
+            cursor: pointer;
+        }
+
+        & li {
+            list-style-type: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        &.alert {
+            flex-direction: row;
+            gap: 10px;
+            bottom: 20px;
+            left: 20px;
+            transform: inherit;
+            top: unset;
+            font-size: 0.7em;
+            padding: 15px 20px;
+            box-shadow: unset;
+            background: black;
+            color: cadetblue;
+            width: auto;
+            max-width: 80%;
+            align-items: flex-start;   
+
+            animation-name: slidein, slideout;
+            animation-duration: 0.5s;
+
+            &.delay1 { animation-delay: 0s, 800ms }
+            &.delay2 { animation-delay: 0s, 1800ms }
+            &.delay3 { animation-delay: 0s, 2800ms }
+            
+            & p {
+                white-space: break-spaces
+            }
+        }
+    }
+
+    &__content {
+        flex-direction: column;
+        padding: 15px 25px;
+        background: rgb(219, 213, 213);
+        border: 1px solid;
+        border-radius: 8px;
+        min-width: 60%;
+        margin-left: 60px;                              // A modifier pour le responsive
+        animation: pulse 0.2s;
+
+        & hr {
+            width: 100%;
+            margin: 5px 0;
+        }
+
+        &__header {
+            justify-content: space-between;
+            display: flex;
+
+            & h1 {
+                font-size: 0.8em;
+                font-weight: bold;
+                color: rgb(105, 105, 27);
+            }
+
+            & img {
+                width: 25px;
+                cursor: pointer;
+            }
+        }
+
+        &__body {
+            display: flex;
+            flex-direction: column;
+
+            div.TA {
+                padding: 10px 10px 9px 10px;
+                background: #FFF;
+                border: 1px solid darkgray;
+                border-radius: 8px;
+
+                & textarea {
+                    background: #FFF;
+                    border-radius: 8px;
+                    overflow-y: clip;
+                    resize: none;
+                    font-size: 0.7em;
+                    max-height: 115px;
+                    overflow-y: scroll;
+                }      
+            }      
+
+            & div.buttons {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+
+                & button {
+                    font-size: 0.6em;
+                    border-radius: 8px;
+                    border: 1px solid rgb(124, 145, 190);
+                    background: rgb(101, 104, 136);
+                    padding: 5px 15px;
+                    color: #fff;
+                    width: fit-content;
+                    align-self: center;
+                    margin: 5px;
+                }
+
+                & input[type="text"] {
+                    display: flex;
+                    width: 100%;
+                    outline: 0;
+                    border: 1px dashed dimgray;
+                    padding: 3px 5px;
+                }
+            }            
+
+            & input[type=file] {
+                display: none
+            }
+
+            & img {
+                align-self: center;
+                max-width: 100%;
+                max-height: 200px;    
+                margin: 10px 0 5px;
+            }
+        }
+
+        &__footer {
+            display: flex;
+            justify-content: center;
+            padding: 15px 0 0 0;
+
+            & button {
+                font-size: 0.6em;
+                border-radius: 8px;
+                border: 1px solid rgb(170, 142, 142);
+                background: rgb(138, 121, 121);
+                padding: 10px 20px;
+                color: #fff;
+
+                &:hover {
+                    background: chartreuse;
+                    color: black;
+                    font-weight: bold;
+                    text-shadow: 0 0 black;
+                }
+            }
+        }
+    }
+}

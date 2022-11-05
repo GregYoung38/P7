@@ -235,7 +235,7 @@ export default function ThisPost(props) {
                                 { myPost && myPost.content && 
                                     <div className="TA">
                                         <TextareaAutosize className="new-comment" spellCheck={false} aria-label="texte de la publication"
-                                                          contentEditable={false} value={ myPost.content } />
+                                                          contentEditable={false} value={ myPost.content } key={uuid} />
                                     </div>
                                 }
 

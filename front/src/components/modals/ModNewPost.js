@@ -5,7 +5,6 @@ import { Popup } from '../modals/ModAlerts';
 import TextareaAutosize from 'react-textarea-autosize';
 
 import { v4 as uuid } from "uuid";
-//import uuid from 'react-uuid';
 
 import btncloseOff from '../../assets/mesimages/close0.webp'
 import btncloseOn from '../../assets/mesimages/close1.webp'

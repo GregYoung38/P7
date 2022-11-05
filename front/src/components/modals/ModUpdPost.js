@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { v4 as uuid} from "uuid";
-//import uuid from 'react-uuid';
 
 import { Popup } from '../modals/ModAlerts';
 import TextareaAutosize from 'react-textarea-autosize';
@@ -12,7 +11,8 @@ import btncloseOn from '../../assets/mesimages/close1.webp'
 import { getToken, axios, getUTCtime } from "../../tools/requests";     /*** FONCTIONS GLOBALES ***/
 
 export default function ModNewPost(props) {   
-    const {active_user} = useSelector((state) => state);    
+    const {active_user} = useSelector((state) => state);   
+     
     const [redaction, setRedaction] = useState('');         // Uniquement pour le Textarea
     const [image, setImage] = useState();
     const [imageUpdated, setImageUpdated] = useState('');
@@ -61,8 +61,8 @@ export default function ModNewPost(props) {
                 .then((res) => {
                     // [info] Fermer la modale en envoyant les nouvelles données
                     if (res.status === 200) {
-                        setShowPopup({ show: true, type: 'success', msg: `La publication va être mise à jour` })   
-                        setTimeout( () => { props.shown(false, res.data) }, 3000);
+                        setShowPopup({ show: true, type: 'success', delay: 2, msg: `La publication va être mise à jour` })   
+                        setTimeout( () => { props.shown(false, res.data) }, 2000);
                     }
                 })
                 .catch((err) => console.log('Problème de mise à jour pour la publication.. \r\n', err.response) )
@@ -74,6 +74,9 @@ export default function ModNewPost(props) {
     }
 
     function writeText(e) { setRedaction(e.target.value) }
+    function writeAlt(e) { setAltText(e.target.value) }
+    function displayAlt(e) { (!showAlt ? setShowAlt(true) : setShowAlt(false)) }
+
     function addPicture(e) {
         setImage(e.target.files[0])
         setImageUpdated(e.target.value)
@@ -83,13 +86,7 @@ export default function ModNewPost(props) {
         else { 
             if (image) { return image }
         }
-    }
-    function writeAlt(e) {
-        setAltText(e.target.value);
-    }
-    function displayAlt(e) {
-        (!showAlt ? setShowAlt(true) : setShowAlt(false))
-    }
+    }    
     function clearImage(e) {
         setImage()
         setImageUpdated()

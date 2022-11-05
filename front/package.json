@@ -29,7 +29,7 @@
     "uuid": "^9.0.0"
   },
   "scripts": {
-    "sass": "sass --watch ./src/sass/style.scss:./src/style.css -w --style expanded",
+    "sass": "sass --watch ./src/sass/style.scss:./src/style.css -w --style compressed",
     "start": "set PORT=5000 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

@@ -56,7 +56,7 @@ exports.updatePost = async (req, res, next) => {
         const post = await postModel.findOne({ _id: req.params.id }).exec();
         //console.log(post);
 
-        if (userId !== post.idAuthor) { throw `Vous n'êtes pas l'auteur du POST` }
+        //if (userId !== post.idAuthor) { throw `Vous n'êtes pas l'auteur du POST` }
         let newPost = {
             ...req.body,
             idAuthor: userId
@@ -194,7 +194,7 @@ exports.updateComment = async (req, res, next) => {
         const searchComment = await commentModel.findOne({ _id: req.params.id }).exec();
 
         if (searchComment === null) { throw `Le commentaire que vous voulez modifier n'existe pas` }
-        if (userId !== searchComment.userId) { throw `Vous n'êtes pas l'auteur du commentaire` }
+        //if (userId !== searchComment.userId) { throw `Vous n'êtes pas l'auteur du commentaire` }
 
         const update = { ...searchComment._doc, ...req.body };
         const updateComment = await commentModel.findByIdAndUpdate({ _id: req.params.id }, update, { new: true }).exec();

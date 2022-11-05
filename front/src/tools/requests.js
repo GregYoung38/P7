@@ -1,6 +1,5 @@
 const _axios = require('axios');
 
-
 export function getUTCtime() {
     /* [info] Mise à jour de la date-système */
     var utc = new Date();

@@ -55,7 +55,7 @@ export default function Comment(props) {
                         setRedaction('')
                     }
                 })
-                .catch((err) => setShowPopup({ show: true, msg: `Non non et non !! C\'est pas bon.. \r\n ${err.response}` }) )
+                .catch((err) => setShowPopup({ show: true, type: 'error', delay: 2, msg: `Une erreur est survenue.. \r\n ${err.response}` }) )
             }
         }
         else {

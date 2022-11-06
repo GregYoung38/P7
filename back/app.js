@@ -27,7 +27,7 @@ mongoose
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Cross-Origin-Resource-Policy", "same-site");
-    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, X-Auth-Token, Content, Accept, Content-Type, Authorization, UID");
+    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, X-Auth-Token, Content, Accept, Content-Type, Authorization");
     res.setHeader("Access-Control-Allow-Methods", "GET, HEAD, POST, PUT, DELETE, PATCH, OPTIONS");
     next();
 });

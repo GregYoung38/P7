@@ -15,7 +15,7 @@ module.exports = (req, res, next) => {
             if (openedToken.exp < openedToken.iat) throw 'Token expiré';
 
             // [info] Vérifier l'exactitude des infos avec la DB
-            const user = UserModel.findOne({ _id: openedToken.user._id })//.exec();
+            const user = UserModel.findOne({ _id: openedToken.user._id })
 
             if (user === null) throw "Utilisateur non-trouvé";
 

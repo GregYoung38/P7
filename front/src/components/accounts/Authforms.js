@@ -49,7 +49,7 @@ const Login_Connect_form = (props) => {
         const RegExp3 = new RegExp('^[A-Za-z0-9]{8,}$');
         /* ---------------------------------------------------------------------------------------------- */
 
-        const inputs = document.querySelectorAll("form input:not([type=submit])");
+        const inputs = document.querySelectorAll(".auth input:not([type=submit])");
         var msgs = '';
     
         /* Contrôles instantanés */    
@@ -118,7 +118,7 @@ const Login_Connect_form = (props) => {
         const err = pre_validation();
 
         if (err.length > 0) {
-            setShowPopup({ show: true, msg: pre_validation() })  
+            setShowPopup({ show: true, msg: err })  
         }
         else {            
             axios('user').post(`/signup`, {
@@ -128,7 +128,7 @@ const Login_Connect_form = (props) => {
                 photo: ''
             })   
             .then(res => {
-                setShowPopup({ show: true, type: 'success', msg: `Compte créé..` }) 
+                setShowPopup({ show: true, type: 'success', delay: 5, msg: `Compte créé..` }) 
                 setTimeout( () => { goto('/sign/connect') }, 3000);
             })
             .catch((error) => setShowPopup({ show: true, msg: error }) )
